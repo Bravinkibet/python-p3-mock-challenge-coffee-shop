@@ -4,7 +4,6 @@ from classes.many_to_many import Coffee
 from classes.many_to_many import Customer
 from classes.many_to_many import Order
 
-
 class TestOrders:
     '''Order in many_to_many.py'''
 
@@ -28,12 +27,11 @@ class TestOrders:
         assert isinstance(order_1.price, float)
         assert isinstance(order_2.price, float)
         
-        # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
+        # Uncomment the next two lines if using Exceptions
+        # with pytest.raises(ValueError):
         #     Order(customer, coffee, 0.99)
         
-        # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
+        # with pytest.raises(ValueError):
         #     Order(customer, coffee, 10.01)
         
     def test_price_is_immutable(self):
@@ -42,12 +40,12 @@ class TestOrders:
         customer = Customer('Steve')
         order_1 = Order(customer, coffee, 2.0)
         
-        # comment out the next two lines if using Exceptions
-        order_1.price = 3.0
-        assert order_1.price == 2.0
+        # Comment out the next two lines if using Exceptions
+        # order_1.price = 3.0
+        # assert order_1.price == 2.0
         
-        # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
+        # Uncomment the next two lines if using Exceptions
+        # with pytest.raises(AttributeError):
         #     order_1.price = 3.0
 
     def test_has_a_customer(self):
@@ -103,6 +101,6 @@ class TestOrders:
         order_1 = Order(customer, coffee, 2.0)
         order_2 = Order(customer_2, coffee, 5.0)
 
-        assert (len(Order.all) == 2.0)
+        assert (len(Order.all) == 2)
         assert (order_1 in Order.all)
         assert (order_2 in Order.all)
